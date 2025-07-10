@@ -1,0 +1,58 @@
+/* Keeps hamburger visible above the overlay */
+.hamburger-wrapper {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1001; /* higher than .overlay */
+}
+
+.hamburger-wrapper svg {
+  transition: stroke 0.3s ease; /* hamburger-react uses SVG stroke for lines */
+}
+
+
+/* Ensures overlay covers full page behind hamburger */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    color: white;
+    z-index: 999; /* lower than hamburger-wrapper */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+      /* Start transparent and invisible */
+  opacity: 0;
+  pointer-events: none;
+
+  /* Transition opacity for fade effect */
+  transition: opacity 0.3s ease; 
+}
+
+.navbar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #17792c4d;
+}
+
+/* When overlay is active (visible) */
+.overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
