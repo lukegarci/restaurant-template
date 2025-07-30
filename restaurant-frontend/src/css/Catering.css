@@ -1,0 +1,66 @@
+.form-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+
+}
+
+.form-background {
+  position: relative;
+  width: 100%;
+  background-image: url('/ChickenAndRice.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  overflow: hidden; /* Ensure overlay doesn't spill */
+  background-attachment: scroll;
+}
+
+.form-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.67); /* Adjust darkness here */
+  z-index: 0;
+}
+
+.catering-form {
+  position: relative;
+  z-index: 1;
+  padding: 40px;
+  color: white;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+.catering-title{
+    text-align: center;
+    padding: 30px;
+}
+
+.catering-form input,
+.catering-form textarea{
+    border-radius: 1px;
+    resize: none;
+}
+
+.form-group {
+    font-size: 20px;
+    padding:12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cater-text{
+    margin-top: 10px;
+    font-size: 16px;
+}

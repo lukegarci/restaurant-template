@@ -1,0 +1,97 @@
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-image: url('/header_background.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 20px;
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* space between logo and text */
+  flex-wrap: wrap; /* makes it responsive if screen gets too small */
+  flex-direction: row;
+}
+
+.footer-logo {
+  height: 40px;
+}
+.footer-content{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    gap: 350px;
+}
+
+.socials,
+.hours,
+.location,
+.contact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.social-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.insta-icon{
+    height: 40px;
+    width: 40px;
+}
+
+.fb-icon{
+    height: 40px;
+    width: 40px;
+}
+
+.contact-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contact-info a {
+    color: rgb(0, 0, 0); /* or any color you want */
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    color: rgb(0, 145, 217); /* or any color you want */
+    text-decoration: underline;
+    transition: color 0.1s ease-in;
+}
+
+.location-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.location-info a{
+    color: black;
+    text-decoration: none;
+}
+
+.location-info a:hover{
+    color: rgb(0, 145, 217); /* or any color you want */
+    text-decoration: underline;
+    transition: color 0.1s ease;
+}

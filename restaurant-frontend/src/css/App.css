@@ -1,0 +1,12 @@
+/* Full-height layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Let main content take up all available vertical space */
+.main-content {
+  flex: 1;
+  padding: 2rem; /* optional: adds spacing inside */
+}
