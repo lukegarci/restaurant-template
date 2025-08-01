@@ -5,7 +5,7 @@ import fb from '../assets/Facebook_Logo_Primary.png';
 
 function Footer() {
     return (
-        <footer className="footer">
+        <div className="footer">
             <div className='footer-content'>
                 <div className='location'>
                     <div className='location-info'>
@@ -46,10 +46,10 @@ function Footer() {
                 </div>
             </div>
             <div className="copyright">
-                <img src="/boujee_logo.jpeg" alt="Boujee logo" className="footer-logo" />
+                <img src='/boujee_logo.JPG' alt="Boujee logo" className="footer-logo" />
                 <p>&copy; 2025 Boujee. All rights reserved.</p>
             </div>
-        </footer>
+        </div>
     );
 }
 

@@ -1,13 +1,11 @@
 .footer {
-  left: 0;
-  bottom: 0;
   width: 100%;
   background-image: url('/header_background.svg');
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
   text-align: center;
   padding: 20px;
+  margin: 0;
 }
 
 .copyright {
@@ -22,12 +20,13 @@
 .footer-logo {
   height: 40px;
 }
-.footer-content{
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: row;
-    gap: 350px;
+.footer-content {
+  display: flex;
+  flex-wrap: wrap; /* ✅ allow wrapping on small screens */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px; /* ✅ smaller, flexible gap */
+  padding: 20px;
 }
 
 .socials,
