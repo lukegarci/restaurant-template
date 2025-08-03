@@ -1,7 +1,7 @@
 ## Restaurant Website + Tablet App 
 <h2>ER Diagram</h2>
 <p align="center">
-  <img src="images/ER-Diagram.png" width="500">
+  <img src="images/ER_Diagram.png" width="500">
 </p>
 
 
