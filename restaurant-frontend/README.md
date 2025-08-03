@@ -1,6 +1,9 @@
 ## Restaurant Website + Tablet App 
-## Database - 
-![ER Diagram](images/er-diagram.png)
+<h2>ER Diagram</h2>
+<p align="center">
+  <img src="images/er-diagram.png" width="500">
+</p>
+
 
 
   
