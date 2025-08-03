@@ -10,11 +10,6 @@
 <p align="center">
   <img src="images/Relational_Schema.png" width="500">
 </p>
-
-
-
-  
-Relational Schema: 
   
 
 Queries: 
