@@ -1,12 +1,15 @@
 ## Restaurant Website + Tablet App 
-<h2>ER Diagram</h2>
+<h2>Diagrams</h2>
+
+<h3>ER Diagram</h3>
 <p align="center">
   <img src="images/ER_Diagram.png" width="500">
 </p>
+
+<h3>Relational Schema</h3>
 <p align="center">
   <img src="images/Relational_Schema.png" width="500">
 </p>
-
 
 
 
