@@ -3,6 +3,10 @@
 <p align="center">
   <img src="images/ER_Diagram.png" width="500">
 </p>
+<p align="center">
+  <img src="images/Relational_Schema.png" width="500">
+</p>
+
 
 
 
