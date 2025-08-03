@@ -1,69 +1,38 @@
-# React + TypeScript + Vite
+Restaurant Website + Tablet App 
+Database - 
+ER Diagram: 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+  
+Relational Schema: 
+  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Queries: 
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Restaurant Website - 
+Frontend:
+Tailwind CSS - Utility-first CSS framework for rapid, responsive UI design  
+Stripe JS/Elements - Secure, PCI-compliant online payment integration  
+React Query - Efficient data fetching, caching, and state management for API calls  
+Google reCAPTCHA - Protects forms from bots and spam submissions  
+WebSocket/Socket.IO - Enables real-time features (e.g., live order status updates)  
+Axios/Fetch - HTTP clients for making API requests to the backend server  
+Backend:
+Spring Boot (Java) - Main backend framework for building REST APIs and business logic  
+Spring WebSocket - Real-time communication for instant order updates to staff/tablets  
+Spring Security - Secure authentication, authorization, and API protection  
+Stripe Java SDK - Payment processing integration (secure, PCI-compliant)  
+Hibernate (JPA) - ORM for database access and mapping Java objects to DB tables  
+PostgreSQL - Production-grade relational database for orders, menus, users  
+Redis (optional) - In-memory cache/session store for performance and scalability  
+JUnit & Mockito - Automated testing for backend logic and endpoints  
+Docker - Containerization for easy deployment and environment consistency  
+Flyway or Liquibase - Database schema migrations and version control  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Tablet App -
