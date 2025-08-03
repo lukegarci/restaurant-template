@@ -1,6 +1,5 @@
 ## Restaurant Website + Tablet App 
 ## Database - 
-ER Diagram: 
 ![ER Diagram](images/er-diagram.png)
 
 
