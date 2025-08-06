@@ -46,7 +46,6 @@ function Footer() {
                 </div>
             </div>
             <div className="copyright">
-                <img src='/boujee_logo.JPG' alt="Boujee logo" className="footer-logo" />
                 <p>&copy; 2025 Boujee. All rights reserved.</p>
             </div>
         </div>
