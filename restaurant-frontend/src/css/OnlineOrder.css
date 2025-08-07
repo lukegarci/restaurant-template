@@ -63,3 +63,26 @@
   color: #666;
   font-style: italic;
 }
+
+
+/* Add this to OnlineOrder.css */
+
+.content-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Menu section takes most of the space */
+.menu-section {
+  flex: 3;
+}
+
+/* Checkout section aligned to left and styled */
+.checkout-section {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}

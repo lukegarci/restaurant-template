@@ -65,7 +65,6 @@ function Menu() {
           </button>
         </div>
       </div>
-
           {Object.entries(groupMenuItems).map(([tag, items]) => (
             <div key={tag} className="tag-section">
               <h2 className="tag-heading">{tag.toUpperCase()}</h2>
