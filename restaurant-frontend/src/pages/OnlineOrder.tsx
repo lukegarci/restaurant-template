@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../css/OnlineOrder.css';
+import delete_img from '../assets/delete.png';
+
 
 interface OrderItem{
     itemid:number;
@@ -99,6 +101,22 @@ function OnlineOrder (){
       });
     }
 
+    function RemoveItemFromCheckout(menuItem: OrderItem){
+          setOrderList(prevOrderList => {
+            const currentItem = prevOrderList.find(item => item.itemid === menuItem.itemid);
+            let updatedList = prevOrderList;
+            if (currentItem) {
+              updatedList = prevOrderList.map(item =>
+                item.itemid === menuItem.itemid
+                  ? { ...item, quantity: item.quantity - 1 }
+                  : item
+              )
+              .filter(item => item.quantity >0);
+            }
+            return updatedList;
+          });
+        }
+
     const totalPrice = orderList.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     return (
@@ -140,11 +158,18 @@ function OnlineOrder (){
               
               <h1>Checkout</h1>
               {orderList.map(item => (
-                <div key={item.itemid}>
+                <div key={item.itemid} className='checkout-list-item'>
                   {item.name} x {item.quantity} - ${item.price * item.quantity}
+                    <button onClick={() => RemoveItemFromCheckout(item)}>
+                    <img src={delete_img} alt="Remove Item" className='rm-icon'/>
+                    </button>
                 </div>
+                
               ))}
-              <p><strong>Total: ${totalPrice.toFixed(2)}</strong></p>
+              <div>
+                <p><strong>Total: ${totalPrice.toFixed(2)}</strong></p>
+                <button>Checkout</button>
+              </div>
             </div>
           </div>
         </div>
