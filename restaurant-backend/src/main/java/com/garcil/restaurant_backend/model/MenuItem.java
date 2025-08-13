@@ -17,8 +17,7 @@ public class MenuItem {
     private String foodtags;
     private String category;
 
-    public MenuItem() {
-    }
+    public MenuItem() {}
 
     public MenuItem(Long itemid,String name, Double price, String description, Boolean availability, String foodtags, String category) {
         this.itemid = itemid;
