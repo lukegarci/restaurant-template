@@ -3,26 +3,27 @@ import '../css/OnlineOrder.css';
 import delete_img from '../assets/delete.png';
 
 interface OrderItem {
-  itemid: number;
-  name: string;
-  price: number;
+  orderId: string;
+  itemId: string;
   quantity: number;
+  itemName: string;
+  itemPrice: number;
 }
 
 interface MenuItem {
-  itemid: number;
-  name: string;
-  description: string;
-  price: number;
-  availability: boolean;
-  foodtags: string;
+  itemId: string;            // UUID
+  itemName: string;
+  itemDescription: string;
+  itemPrice: number;
+  itemAvailability: boolean;
   category: string;
-  imageurl: string;
+  meal: string;
+  imageUrl: string;
 }
 
 function OnlineOrder() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-  const [, setSelectedCategory] = useState<string>('');
+  const [, setSelectedMeal] = useState<string>('');
   const [, setShowTime] = useState<string>(() => {
     const date = new Date();
     return date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
@@ -37,13 +38,14 @@ function OnlineOrder() {
     phoneNumber: ''
   });
 
-  const selectCategory = (category: string) => {
-    setSelectedCategory(category);
-    fetch(`http://localhost:8080/api/menu/category/${category}`)
+  const selectMeal = (meal: string) => {
+    setSelectedMeal(meal);
+    fetch(`http://localhost:8080/api/menu/meal/${meal}`)
       .then(response => response.json())
       .then(data => setMenuItems(data))
-      .catch(error => console.error(`Error fetching ${category} items:`, error));
+      .catch(error => console.error(`Error fetching ${meal} items:`, error));
   };
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,12 +58,12 @@ function OnlineOrder() {
   }, []);
 
   useEffect(() => {
-    selectCategory(MenuDisplayed());
+    selectMeal(MenuDisplayed());
   }, []);
 
   const groupMenuItems = menuItems.reduce<Record<string, MenuItem[]>>(
     (acc, item) => {
-      const tag = item.foodtags;
+      const tag = item.category;
       if (!acc[tag]) {
         acc[tag] = [];
       }
@@ -74,11 +76,11 @@ function OnlineOrder() {
   function MenuDisplayed(): string {
     const time = new Date().getHours();
     if (time >= 6 && time < 10) {
-      return 'breakfast';
+      return 'Breakfast';
     } else if (time >= 10 && time < 17) {
-      return 'lunch';
+      return 'Lunch';
     } else if (time >= 17 && time < 24) {
-      return 'dinner';
+      return 'Dinner';
     } else {
       return 'Closed';
     }
@@ -87,20 +89,20 @@ function OnlineOrder() {
   function AddToCheckoutList(menuItem: MenuItem) {
     setOrderList(prevOrderList => {
       const currentItem = prevOrderList.find(
-        item => item.itemid == menuItem.itemid
+        item => item.itemId == menuItem.itemId
       );
       let updatedList;
       if (currentItem) {
         updatedList = prevOrderList.map(item =>
-          item.itemid === menuItem.itemid
+          item.itemId === menuItem.itemId
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       } else {
         const newOrderItem: OrderItem = {
-          itemid: menuItem.itemid,
-          name: menuItem.name,
-          price: menuItem.price,
+          itemId: menuItem.itemId,
+          itemName: menuItem.itemName,
+          itemPrice: menuItem.itemPrice,
           quantity: 1
         };
         updatedList = [...prevOrderList, newOrderItem];
@@ -112,13 +114,13 @@ function OnlineOrder() {
   function RemoveItemFromCheckout(menuItem: OrderItem) {
     setOrderList(prevOrderList => {
       const currentItem = prevOrderList.find(
-        item => item.itemid === menuItem.itemid
+        item => item.itemId === menuItem.itemId
       );
       let updatedList = prevOrderList;
       if (currentItem) {
         updatedList = prevOrderList
           .map(item =>
-            item.itemid === menuItem.itemid
+            item.itemId === menuItem.itemId
               ? { ...item, quantity: item.quantity - 1 }
               : item
           )
@@ -142,9 +144,8 @@ function OnlineOrder() {
       lastName: formData.lastName,
       phoneNumber: formData.phoneNumber,
       items: orderList.map(item => ({
-        itemId: item.itemid,
-        name: item.name,
-        price: item.price,
+        itemId: item.itemId,
+        name: item.itemName,
         quantity: item.quantity
       }))
     };
@@ -174,44 +175,44 @@ function OnlineOrder() {
   }
 
   const totalPrice = orderList.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.itemPrice * item.quantity,
     0
   );
 
   return (
     <div className="online-menu-container">
-      <h1>{MenuDisplayed().toUpperCase()}</h1>
+      <h1>{MenuDisplayed()}</h1>
 
       <div className="content-layout">
         <div className="menu-section">
           {Object.entries(groupMenuItems).map(([tag, items]) => (
             <div key={tag} className="tag-section">
-              <h2 className="tag-heading">{tag.toUpperCase()}</h2>
+              <h2 className="tag-heading">{tag}</h2>
               <div className="menu-grid">
                 {items.map(item => (
                   <button
-                    key={item.itemid}
+                    key={item.itemId}
                     className="menu-card"
                     onClick={() => AddToCheckoutList(item)}
                   >
-                    <h3>{item.name}</h3>
-                    {item.imageurl && (
+                    <h3>{item.itemName}</h3>
+                    {item.imageUrl && (
                       <img
-                        src={item.imageurl}
-                        alt={item.name}
+                        src={item.imageUrl}
+                        alt={item.itemName}
                         className="tag-item-image"
                       />
                     )}
                     <p>
-                      <strong>Price:</strong> ${item.price.toFixed(2)}
+                      <strong>Price:</strong> ${item.itemPrice.toFixed(2)}
                     </p>
                     <p>
                       <em>{item.category}</em>
                     </p>
-                    <p>{item.description}</p>
+                    <p>{item.itemDescription}</p>
                     <p>
                       <strong>Available:</strong>{' '}
-                      {item.availability ? 'Yes' : 'No'}
+                      {item.itemAvailability ? 'Yes' : 'No'}
                     </p>
                   </button>
                 ))}
@@ -223,9 +224,9 @@ function OnlineOrder() {
         <div className="checkout-section">
           <h1>Checkout</h1>
           {orderList.map(item => (
-            <div key={item.itemid} className="checkout-list-item">
-              {item.name} x {item.quantity} - $
-              {(item.price * item.quantity).toFixed(2)}
+            <div key={item.itemId} className="checkout-list-item">
+              {item.itemName} x {item.quantity} - $
+              {(item.itemPrice * item.quantity).toFixed(2)}
               <button onClick={() => RemoveItemFromCheckout(item)}>
                 <img
                   src={delete_img}

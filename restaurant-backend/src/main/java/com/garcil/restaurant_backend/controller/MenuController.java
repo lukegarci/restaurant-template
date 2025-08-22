@@ -19,8 +19,8 @@ public class MenuController {
         return menuItemRepository.findAll();
     }
 
-    @GetMapping("/category/{category}")
-    public List<MenuItem> getItemsByCategory(@PathVariable String category) {
-        return menuItemRepository.findByCategory(category);
+    @GetMapping("/meal/{meal}")
+    public List<MenuItem> getItemsByMeal(@PathVariable String meal) {
+        return menuItemRepository.findByMeal(meal);
     }
 }

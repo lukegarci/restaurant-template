@@ -3,51 +3,58 @@ package com.garcil.restaurant_backend.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.util.UUID;
 
 @Entity
 @Table(name = "menu")
 public class MenuItem {
-    @Id
-    private Long itemid;
 
-    private String name;
-    private String description;
-    private Double price;
-    private Boolean availability;
-    private String foodtags;
+    @Id
+    private UUID itemId;
+
+    private String itemName;
+    private String itemDescription;
+    private Double itemPrice;
+    private Boolean itemAvailability;
     private String category;
+    private String meal;
+    private String imageUrl;
 
     public MenuItem() {}
 
-    public MenuItem(Long itemid,String name, Double price, String description, Boolean availability, String foodtags, String category) {
-        this.itemid = itemid;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.availability = availability;
-        this.foodtags = foodtags;
+    public MenuItem(UUID itemId, String itemName, Double itemPrice, String itemDescription,
+                    Boolean itemAvailability, String category, String meal, String imageUrl) {
+        this.itemId = itemId;
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
+        this.itemDescription = itemDescription;
+        this.itemAvailability = itemAvailability;
         this.category = category;
+        this.meal = meal;
+        this.imageUrl = imageUrl;
     }
 
-    public Long getItemid() { return itemid; }
-    public void setItemid(Long itemid) { this.itemid = itemid; }
+    public UUID getItemId() { return itemId; }
+    public void setItemId(UUID itemId) { this.itemId = itemId; }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getItemName() { return itemName; }
+    public void setItemName(String itemName) { this.itemName = itemName; }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getItemDescription() { return itemDescription; }
+    public void setItemDescription(String itemDescription) { this.itemDescription = itemDescription; }
 
-    public Double getPrice() { return price; }
-    public void setPrice(Double price) { this.price = price; }
+    public Double getItemPrice() { return itemPrice; }
+    public void setItemPrice(Double itemPrice) { this.itemPrice = itemPrice; }
 
-    public Boolean getAvailability() { return availability; }
-    public void setAvailability(Boolean availability) { this.availability = availability; }
-
-    public String getFoodtags() { return foodtags; }
-    public void setFoodtags(String foodtags) { this.foodtags = foodtags; }
+    public Boolean getItemAvailability() { return itemAvailability; }
+    public void setItemAvailability(Boolean itemAvailability) { this.itemAvailability = itemAvailability; }
 
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
 
+    public String getMeal() { return meal; }
+    public void setMeal(String meal) { this.meal = meal; }
+
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }

@@ -22,15 +22,6 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<String> placeOrder(@RequestBody OrderDTO orderDTO) {
-        // Map DTO to entity
-        Order order = new Order();
-        order.setFirstname(orderDTO.getFirstname());
-        order.setLastname(orderDTO.getLastname());
-        order.setPhonenumber(orderDTO.getPhonenumber());
-        order.setOrderlist(orderDTO.getOrderlist());
-
-        //save order
-        orderRepository.save(order);
 
         return ResponseEntity.ok("Order has been sent");
     }

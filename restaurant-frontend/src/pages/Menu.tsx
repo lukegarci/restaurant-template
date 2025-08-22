@@ -2,32 +2,32 @@ import { useEffect, useState } from 'react';
 import '../css/Menu.css';
 
 interface MenuItem {
-  itemid: number;
-  name: string;
-  description: string;
-  price: number;
-  availability: boolean;
-  foodtags: string;
+  itemId: string;            // UUID
+  itemName: string;
+  itemDescription: string;
+  itemPrice: number;
+  itemAvailability: boolean;
   category: string;
-  imageurl: string;
+  meal: string;
+  imageUrl: string;
 }
 
 function Menu() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>(''); 
+  const [selectedCategory, setSelectedMeal] = useState<string>(''); 
   
 
 
-  const selectCategory = (category: string) => {
-    setSelectedCategory(category);
-    fetch(`http://localhost:8080/api/menu/category/${category}`)
+  const selectMeal = (meal: string) => {
+    setSelectedMeal(meal);
+    fetch(`http://localhost:8080/api/menu/meal/${meal}`)
       .then(response => response.json())
       .then(data => setMenuItems(data))
-      .catch(error => console.error(`Error fetching ${category} items:`, error));
+      .catch(error => console.error(`Error fetching ${meal} items:`, error));
   };
 
   const groupMenuItems = menuItems.reduce<Record<string, MenuItem[]>>((acc, item) => {
-    const tag = item.foodtags;
+    const tag = item.category;
     if (!acc[tag]) {
       acc[tag] = [];
     }
@@ -37,7 +37,7 @@ function Menu() {
 
 
   useEffect(() => {
-    selectCategory('breakfast');
+    selectMeal('Breakfast');
   }, []);
 
   return (
@@ -46,20 +46,20 @@ function Menu() {
         <h1 className="menu-title">Menu</h1>
         <div className='category-buttons'>
           <button
-            onClick={() => selectCategory("breakfast")}
-            className={selectedCategory === "breakfast" ? "active" : ""}
+            onClick={() => selectMeal("Breakfast")}
+            className={selectedCategory === "Breakfast" ? "active" : ""}
           >
             Breakfast
           </button>
           <button
-            onClick={() => selectCategory("lunch")}
-            className={selectedCategory === "lunch" ? "active" : ""}
+            onClick={() => selectMeal("Lunch")}
+            className={selectedCategory === "Lunch" ? "active" : ""}
           >
             Lunch
           </button>
           <button
-            onClick={() => selectCategory("dinner")}
-            className={selectedCategory === "dinner" ? "active" : ""}
+            onClick={() => selectMeal("Dinner")}
+            className={selectedCategory === "Dinner" ? "active" : ""}
           >
             Dinner
           </button>
@@ -67,16 +67,16 @@ function Menu() {
       </div>
           {Object.entries(groupMenuItems).map(([tag, items]) => (
             <div key={tag} className="tag-section">
-              <h2 className="tag-heading">{tag.toUpperCase()}</h2>
+              <h2 className="tag-heading">{tag}</h2>
               <div className="menu-grid"> {}
                 {items.map(item => (
-                  <div key={item.itemid} className="menu-card">
-                    <h3>{item.name}</h3>
-                    {item.imageurl && <img src={item.imageurl} alt={item.name} className="tag-item-image" />}
-                    <p><strong>Price:</strong> ${item.price.toFixed(2)}</p>
+                  <div key={item.itemId} className="menu-card">
+                    <h3>{item.itemName}</h3>
+                    {item.imageUrl && <img src={item.imageUrl} alt={item.itemName} className="tag-item-image" />}
+                    <p><strong>Price:</strong> ${item.itemPrice.toFixed(2)}</p>
                     <p><em>{item.category}</em></p>
-                    <p>{item.description}</p>
-                    <p><strong>Available:</strong> {item.availability ? 'Yes' : 'No'}</p>
+                    <p>{item.itemDescription}</p>
+                    <p><strong>Available:</strong> {item.itemAvailability ? 'Yes' : 'No'}</p>
                   </div>
                 ))}
               </div>
