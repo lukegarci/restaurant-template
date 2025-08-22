@@ -31,7 +31,7 @@
 }
 
 .category-buttons button:hover {
-  background-color: rgb(68, 68, 68);
+  background-color: #698B6F;
   color: white;
   transition: background-color 0.2s ease-in, color 0.2s ease-out;
 }
@@ -71,8 +71,8 @@
 }
 
 .category-buttons button.active {
-  background-color: rgb(68, 68, 68);
-  color: white;
+  background-color: #698B6F;
+  color: #F7F7F7;
   transition: background-color 0.2s ease-in, color 0.2s ease-out;
 }
 
