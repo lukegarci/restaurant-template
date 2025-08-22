@@ -24,7 +24,7 @@
 }
 
 .menu-card {
-  background-color: white;
+
   border-radius: 12px;
   padding: 1.25rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -142,14 +142,14 @@
 
 .checkout-form input[type="text"]:focus,
 .checkout-form input[type="email"]:focus {
-  border-color: #ff9800; /* warm orange highlight */
-  box-shadow: 0 0 4px rgba(255, 152, 0, 0.4);
+  border-color: #4C6A4F; 
+  box-shadow: 0 0 4px rgba(7, 102, 35, 0.4);
   outline: none;
 }
 
 .checkout-form .submit-button {
   padding: 0.75rem;
-  background-color: #ff9800; /* warm orange */
+  background-color: #4C6A4F; 
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -160,7 +160,7 @@
 }
 
 .checkout-form .submit-button:hover {
-  background-color: #e68a00; /* darker orange on hover */
+  background-color: #698B6F; 
   transform: translateY(-1px);
 }
 

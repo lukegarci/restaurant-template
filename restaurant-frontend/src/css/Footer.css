@@ -1,19 +1,18 @@
 .footer {
   width: 100%;
-  background-image: url('/header_background.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #333333;
   text-align: center;
   padding: 20px;
   margin: 0;
+  color: #F7F7F7;
 }
 
 .copyright {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* space between logo and text */
-  flex-wrap: wrap; /* makes it responsive if screen gets too small */
+  gap: 10px; 
+  flex-wrap: wrap;
   flex-direction: row;
 }
 
@@ -22,11 +21,12 @@
 }
 .footer-content {
   display: flex;
-  flex-wrap: wrap; /* ✅ allow wrapping on small screens */
+  flex-wrap: wrap; 
   justify-content: center;
   align-items: flex-start;
-  gap: 60px; /* ✅ smaller, flexible gap */
+  gap: 60px;
   padding: 20px;
+  
 }
 
 .socials,
@@ -67,12 +67,12 @@
 }
 
 .contact-info a {
-    color: rgb(0, 0, 0); /* or any color you want */
+    color: #F7F7F7; 
     text-decoration: none;
 }
 
 .contact-info a:hover {
-    color: rgb(0, 145, 217); /* or any color you want */
+    color: rgb(0, 145, 217); 
     text-decoration: underline;
     transition: color 0.1s ease-in;
 }
@@ -85,12 +85,12 @@
 }
 
 .location-info a{
-    color: black;
+    color: #F7F7F7;
     text-decoration: none;
 }
 
 .location-info a:hover{
-    color: rgb(0, 145, 217); /* or any color you want */
+    color: rgb(0, 145, 217);
     text-decoration: underline;
     transition: color 0.1s ease;
 }

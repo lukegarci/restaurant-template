@@ -183,40 +183,25 @@ function OnlineOrder() {
 
       <div className="content-layout">
         <div className="menu-section">
-          {Object.entries(groupMenuItems).map(([tag, items]) => (
-            <div key={tag} className="tag-section">
-              <h2 className="tag-heading">{tag}</h2>
-              <div className="menu-grid">
-                {items.map(item => (
-                  <button
-                    key={item.itemId}
-                    className="menu-card"
-                    onClick={() => AddToCheckoutList(item)}
-                  >
-                    <h3>{item.itemName}</h3>
-                    {item.imageUrl && (
-                      <img
-                        src={item.imageUrl}
-                        alt={item.itemName}
-                        className="tag-item-image"
-                      />
-                    )}
-                    <p>
-                      <strong>Price:</strong> ${item.itemPrice.toFixed(2)}
-                    </p>
-                    <p>
-                      <em>{item.category}</em>
-                    </p>
-                    <p>{item.itemDescription}</p>
-                    <p>
-                      <strong>Available:</strong>{' '}
-                      {item.itemAvailability ? 'Yes' : 'No'}
-                    </p>
-                  </button>
-                ))}
+          <div className="tag-sections-container">
+            {Object.entries(groupMenuItems).map(([tag, items]) => (
+              <div key={tag} className="tag-section">
+                <h2 className="tag-heading">{tag}</h2>
+                <div className="menu-grid">
+                  {items.map(item => (
+                    <div key={item.itemId} className="menu-card">
+                      <h3>{item.itemName}</h3>
+                      {item.imageUrl && <img src={item.imageUrl} alt={item.itemName} className="tag-item-image" />}
+                      <p><strong>Price:</strong> ${item.itemPrice.toFixed(2)}</p>
+                      <p><em>{item.category}</em></p>
+                      <p>{item.itemDescription}</p>
+                      <p><strong>Available:</strong> {item.itemAvailability ? 'Yes' : 'No'}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="checkout-section">
