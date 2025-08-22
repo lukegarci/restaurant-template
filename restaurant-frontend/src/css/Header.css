@@ -1,11 +1,9 @@
 .header{
     display: flex;
     justify-content: center;
-    background-image: url('/header_background.svg'); /* leading slash means root of public folder */
-    background-size: cover;       /* scale image to cover the entire header */
-    background-position: center;  /* center the image */
-    background-repeat: no-repeat; /* avoid tiling */
-
+    
+    background-color:#333333 ;
+    
 }
 
 
@@ -13,6 +11,7 @@
     display:flex;
     align-items: center;
     gap: 10px;
+    color: #F7F7F7;
 }
 
 .logo{
