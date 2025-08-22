@@ -1,4 +1,4 @@
-import logo from '../assets/temp_logo.png';
+import logo from '../assets/restaurant-icon.png';
 import '../css/Header.css';
 import NavBar from './NavBar';
 
