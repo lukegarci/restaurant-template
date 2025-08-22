@@ -33,8 +33,7 @@ function OnlineOrder() {
 
   //Form state
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     phoneNumber: ''
   });
 
@@ -140,8 +139,7 @@ function OnlineOrder() {
 
     // Build DTO
     const orderDTO = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
+      name: formData.name,
       phoneNumber: formData.phoneNumber,
       items: orderList.map(item => ({
         itemId: item.itemId,
@@ -166,7 +164,7 @@ function OnlineOrder() {
         alert('Order placed successfully!');
         console.log('Response:', data);
         setOrderList([]);
-        setFormData({ firstName: '', lastName: '', phoneNumber: '' });
+        setFormData({ name: '', phoneNumber: '' });
       })
       .catch(err => {
         console.error(err);
@@ -242,29 +240,18 @@ function OnlineOrder() {
             </p>
             <form onSubmit={HandleCheckout} className="checkout-form">
               <div className="form-group">
-                <label>First Name*</label>
+                <label>Name*</label>
                 <input
                   type="text"
                   name="first_name"
-                  value={formData.firstName}
+                  value={formData.name}
                   onChange={e =>
-                    setFormData({ ...formData, firstName: e.target.value })
+                    setFormData({ ...formData, name: e.target.value })
                   }
                   required
                 />
               </div>
-              <div className="form-group">
-                <label>Last Name*</label>
-                <input
-                  type="text"
-                  name="last_name"
-                  value={formData.lastName}
-                  onChange={e =>
-                    setFormData({ ...formData, lastName: e.target.value })
-                  }
-                  required
-                />
-              </div>
+             
               <div className="form-group">
                 <label>Phone Number*</label>
                 <input
