@@ -5,6 +5,7 @@ import OnlineOrder from "./pages/OnlineOrder";
 import Catering from "./pages/Catering";
 import Header from "./components/Header"
 import Footer from "./components/Footer";
+import './css/App.css'
 
 
 

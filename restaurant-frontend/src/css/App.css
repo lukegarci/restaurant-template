@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #1A1A1A;
+  background-color: #F7F7F7;
 }
 
 /* Let main content take up all available vertical space */

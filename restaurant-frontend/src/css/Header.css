@@ -1,12 +1,24 @@
-.header{
+.header {
     display: flex;
     justify-content: center;
-    
-    background-color:#333333 ;
-    
+    background-color: #333333;
+    border-radius: 500px;
+    margin-top: 20px;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 10px;
+
+    /* New for smooth loading */
+    opacity: 0;              /* start invisible */
+    transform: translateY(-20px); /* slightly move up */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* smooth transition */
 }
 
-
+/* Add a loaded state */
+.header.loaded {
+    opacity: 1;
+    transform: translateY(0); /* move to original position */
+}
 .brand{
     display:flex;
     align-items: center;
