@@ -16,14 +16,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .cors() // IMPORTANT: Enable CORS support in Spring Security
-                .and()
+                .cors().and()
                 .csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/menu/**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .httpBasic();
+                        .anyRequest().permitAll()   // 🚨 allow all endpoints without auth
+                );
 
         return http.build();
     }
@@ -31,7 +28,7 @@ public class SecurityConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5173"));
+        config.setAllowedOrigins(List.of("http://localhost:5173")); // your React app
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);

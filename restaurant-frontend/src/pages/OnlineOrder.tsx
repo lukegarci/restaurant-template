@@ -3,7 +3,6 @@ import '../css/OnlineOrder.css';
 import delete_img from '../assets/delete.png';
 
 interface OrderItem {
-  orderId: string;
   itemId: string;
   quantity: number;
   itemName: string;
@@ -137,40 +136,42 @@ function OnlineOrder() {
       return;
     }
 
-    // Build DTO
+    // Build DTO for checkout session
     const orderDTO = {
       name: formData.name,
       phoneNumber: formData.phoneNumber,
       items: orderList.map(item => ({
         itemId: item.itemId,
         name: item.itemName,
-        quantity: item.quantity
+        quantity: item.quantity,
+        price: item.itemPrice
       }))
     };
 
-    console.log('Order DTO to send:', orderDTO);
-
-    // Example POST request
-    fetch('http://localhost:8080/api/orders', {
+    console.log('Sending order to Stripe checkout:', orderDTO);
+    fetch('http://localhost:8080/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(orderDTO)
     })
       .then(res => {
-        if (!res.ok) throw new Error('Failed to place order');
+        if (!res.ok) throw new Error('Failed to create checkout session');
         return res.json();
       })
       .then(data => {
-        alert('Order placed successfully!');
-        console.log('Response:', data);
-        setOrderList([]);
-        setFormData({ name: '', phoneNumber: '' });
+        if (data.url) {
+          // Redirect to Stripe Checkout page
+          window.location.href = data.url;
+        } else {
+          alert('Error: No checkout URL received');
+        }
       })
       .catch(err => {
         console.error(err);
-        alert('Error placing order');
+        alert('Error starting checkout');
       });
   }
+
 
   const totalPrice = orderList.reduce(
     (acc, item) => acc + item.itemPrice * item.quantity,
@@ -189,14 +190,14 @@ function OnlineOrder() {
                 <h2 className="tag-heading">{tag}</h2>
                 <div className="menu-grid">
                   {items.map(item => (
-                    <div key={item.itemId} className="menu-card">
+                    <button key={item.itemId}  className='menu-card' onClick={() => AddToCheckoutList(item)}>
                       <h3>{item.itemName}</h3>
                       {item.imageUrl && <img src={item.imageUrl} alt={item.itemName} className="tag-item-image" />}
                       <p><strong>Price:</strong> ${item.itemPrice.toFixed(2)}</p>
                       <p><em>{item.category}</em></p>
                       <p>{item.itemDescription}</p>
                       <p><strong>Available:</strong> {item.itemAvailability ? 'Yes' : 'No'}</p>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
